@@ -1,10 +1,9 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import 'dart:math';
 
 class BancoFlutter extends StatelessWidget {
   const BancoFlutter({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +18,9 @@ class BancoFlutter extends StatelessWidget {
           centerTitle: true,
         ),
       ),
-      home: const MyHomePage(title: 'BANCO FLUTTER'),
+      home: const MyHomePage(
+        title: 'BANCO FLUTTER',
+      ),
     );
   }
 }
@@ -38,7 +39,7 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -81,7 +82,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 Text(
                   "Saldo: R\$ ${_balance.toStringAsFixed(2)}",
                   style: const TextStyle(
-                      fontSize: 30, fontWeight: FontWeight.bold),
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 const Text(
@@ -119,20 +122,22 @@ class _MyHomePageState extends State<MyHomePage> {
                           Text(
                             "${transaction.isDeposit ? "Depósito" : "Saque"} de R\$ ${transaction.amount.toStringAsFixed(2)}",
                             style: TextStyle(
-                                color: transaction.isDeposit
-                                    ? Colors.green
-                                    : Colors.red,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
+                              color: transaction.isDeposit
+                                  ? Colors.green
+                                  : Colors.red,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                             textAlign: TextAlign.center,
                           ),
                         ],
                       ),
                       subtitle: Center(
                         child: Text(
-                          "${transaction.date.day}/${transaction.date.month}/${transaction.date.year}",
-                          textAlign: TextAlign.center,
-                        ),
+                            "${transaction.date.day}/${transaction.date.month}/${transaction.date.year}",
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
                       ),
                     ),
                   );
@@ -201,11 +206,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   backgroundColor: const Color(0xFF1DA756),
                   padding: const EdgeInsets.all(20),
                 ),
-                child: const Text("Saque",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    )),
+                child: const Text(
+                  "Saque",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
               ),
             ),
           ],
@@ -213,8 +220,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-}
-
-void main() {
-  runApp(const BancoFlutter());
 }
